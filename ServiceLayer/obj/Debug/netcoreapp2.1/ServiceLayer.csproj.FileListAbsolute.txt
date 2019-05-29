@@ -1,0 +1,12 @@
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\bin\Debug\netcoreapp2.1\ServiceLayer.deps.json
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\bin\Debug\netcoreapp2.1\ServiceLayer.dll
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\bin\Debug\netcoreapp2.1\ServiceLayer.pdb
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\bin\Debug\netcoreapp2.1\DAL.dll
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\bin\Debug\netcoreapp2.1\DAL.pdb
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\obj\Debug\netcoreapp2.1\ServiceLayer.csprojAssemblyReference.cache
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\obj\Debug\netcoreapp2.1\ServiceLayer.csproj.CoreCompileInputs.cache
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\obj\Debug\netcoreapp2.1\ServiceLayer.AssemblyInfoInputs.cache
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\obj\Debug\netcoreapp2.1\ServiceLayer.AssemblyInfo.cs
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\obj\Debug\netcoreapp2.1\ServiceLayer.csproj.CopyComplete
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\obj\Debug\netcoreapp2.1\ServiceLayer.dll
+C:\Users\TSOMI\Desktop\PROJECTS\Final\Sokokapu_Stock_Management\ServiceLayer\obj\Debug\netcoreapp2.1\ServiceLayer.pdb

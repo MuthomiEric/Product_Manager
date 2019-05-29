@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="div-center">
+
+    <table class="tbl-center">
+
+        <thead>
+            <tr>
+                <th>Image</th>
+
+                <th>Product Name</th>
+
+                <th>Description</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td style="width:200px"><img src="@product.ImageUrl" style="max-height:100px" alt="Alternate Text" /> </td>
+                    <td style="width:200px">@product.ProductName</td>
+                    <td style="width:200px">@product.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

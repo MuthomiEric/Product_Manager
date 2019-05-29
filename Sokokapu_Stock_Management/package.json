@@ -1,0 +1,15 @@
+﻿{
+  "name": "sokokapu_stock_management",
+  "version": "1.0.0",
+  "description": "Mostly for compiling my Sass",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass wwwroot/Sass/site.scss wwwroot/css/site.css"
+  },
+  "author": "Erick Muthomi",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.12.0"
+
+  }
+}
