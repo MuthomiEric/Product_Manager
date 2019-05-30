@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAL.Migrations
 {
-    public partial class Firstmigration : Migration
+    public partial class UpdatedEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,9 @@ namespace DAL.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CatName = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    IsActive = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,11 +31,11 @@ namespace DAL.Migrations
                     ProductName = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
-                    Specifications = table.Column<string>(nullable: false),
+                    Color = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
-                    Size = table.Column<string>(nullable: false),
+                    NumberSold = table.Column<int>(nullable: false),
+                    Size = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: false),
-                    InStock = table.Column<bool>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

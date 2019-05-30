@@ -16,16 +16,27 @@ namespace Sokokapu_Stock_Management.Models
         public string Description { get; set; }
         [Required]
         public decimal Price { get; set; }
-        [Required]
-        public string Specifications { get; set; }
+
+        public string Color { get; set; }
         [Required]
         public int Quantity { get; set; }
-        [Required]
+        public int NumberSold { get; set; }
+        public bool InStock
+        {
+            get
+            {
+                var remain = Quantity - NumberSold;
+                if (remain > 0)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
         public string Size { get; set; }
         [Required]
         public string ImageUrl { get; set; }
-        //public string ImageThumnailUrl { get; set; }
-        public bool InStock { get; set; }
         //public User AddedBy { get; set; }
         public virtual int CategoryId { get; set; }
         public virtual Category Category { get; set; }

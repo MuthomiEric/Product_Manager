@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Sokokapu_Stock_Management.Models
+﻿namespace Sokokapu_Stock_Management.Models
 {
     public class User
     {
@@ -12,6 +7,7 @@ namespace Sokokapu_Stock_Management.Models
         public string Password { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string OfficeNo { get; set; }
         public string Role { get; set; }
     }
 }

@@ -12,7 +12,9 @@ namespace Sokokapu_Stock_Management.Models
         public int Id { get; set; }
         [Required]
         [DisplayName("Category Name")]
-        public string CatName { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool IsActive { get; set; }
         public List<Product> Products { get; set; }
 
     }

@@ -24,7 +24,11 @@ namespace DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CatName")
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Name")
                         .IsRequired();
 
                     b.HasKey("Id");
@@ -40,13 +44,15 @@ namespace DAL.Migrations
 
                     b.Property<int>("CategoryId");
 
+                    b.Property<string>("Color");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<string>("ImageUrl")
                         .IsRequired();
 
-                    b.Property<bool>("InStock");
+                    b.Property<int>("NumberSold");
 
                     b.Property<decimal>("Price");
 
@@ -55,11 +61,7 @@ namespace DAL.Migrations
 
                     b.Property<int>("Quantity");
 
-                    b.Property<string>("Size")
-                        .IsRequired();
-
-                    b.Property<string>("Specifications")
-                        .IsRequired();
+                    b.Property<string>("Size");
 
                     b.HasKey("Id");
 

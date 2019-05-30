@@ -21,16 +21,61 @@ namespace Sokokapu_Stock_Management.Controllers
         public IActionResult Index()
         {
             var products = _productRepository.AllProducts();
+            ProductViewModel pr = new ProductViewModel();
             var model = products.Select(p => new ProductViewModel()
             {
                 ImageUrl = p.ImageUrl,
                 ProductName = p.ProductName,
-                Description = p.Description
+                Description = p.Description,
+                Price = p.Price,
+                Quantity = p.Quantity,
+                NumberSold = p.NumberSold,
+                Remaining = (p.Quantity - p.NumberSold),
+                Size = p.Size,
+                InStock = p.InStock
             });
             return View(model);
 
         }
 
+        //TODO Just like editing
+        public ActionResult Sold(int id)
+        {
+            if (id <= 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+
+
+                var product = _productRepository.GetProductById(id);
+                ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "CatName", product.CategoryId);
+                return View(product);
+
+            }
+
+        }
+
+        //POST: Default/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Sold(int id, Product product)
+        {
+            if (id != product.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _productRepository.Update(product);
+
+                return RedirectToAction(nameof(ManageProduct));
+            }
+
+            return View();
+        }
         public IActionResult ManageProduct()
         {
             var products = _productRepository.AllProducts();
@@ -87,7 +132,7 @@ namespace Sokokapu_Stock_Management.Controllers
 
         //POST: Default/Edit/5
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Product product)
         {
             if (id != product.Id)

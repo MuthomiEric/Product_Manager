@@ -12587,11 +12587,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\Final\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management.csproj",
+      "projectUniqueName": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\GitHub\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management.csproj",
       "projectName": "Sokokapu_Stock_Management",
-      "projectPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\Final\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management.csproj",
+      "projectPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\GitHub\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management.csproj",
       "packagesPath": "C:\\Users\\TSOMI\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\Final\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management\\obj\\",
+      "outputPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\GitHub\\Sokokapu_Stock_Management\\Sokokapu_Stock_Management\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12610,11 +12610,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\Final\\Sokokapu_Stock_Management\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\Final\\Sokokapu_Stock_Management\\DAL\\DAL.csproj"
+            "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\GitHub\\Sokokapu_Stock_Management\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\GitHub\\Sokokapu_Stock_Management\\DAL\\DAL.csproj"
             },
-            "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\Final\\Sokokapu_Stock_Management\\ServiceLayer\\ServiceLayer.csproj": {
-              "projectPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\Final\\Sokokapu_Stock_Management\\ServiceLayer\\ServiceLayer.csproj"
+            "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\GitHub\\Sokokapu_Stock_Management\\ServiceLayer\\ServiceLayer.csproj": {
+              "projectPath": "C:\\Users\\TSOMI\\Desktop\\PROJECTS\\GitHub\\Sokokapu_Stock_Management\\ServiceLayer\\ServiceLayer.csproj"
             }
           }
         }
