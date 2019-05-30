@@ -20,27 +20,32 @@
     </environment>
 </head>
 <body>
-    <div class="top-nav-div">
-        <div class="top-nav-div-inner">
-            <div class="div-logo">
+    <div class="top-nav-div-admin">
+        <div class="top-nav-div-admin-inner">
+            <a asp-action="create" asp-controller="Product" class="div-logo">
                 <h1><span class="span-green">Soko</span><span class="span-red">Kapu</span></h1>
                 <div class="div-line"></div>
-            </div>
+            </a>
 
-            <div class="div-btn btn btn-success">
-                <a asp-action="ManageProduct">Manage Products</a>
-            </div>
         </div>
 
     </div>
 
     @*<partial name="_CookieConsentPartial" />*@
+    <section class="main-section">
+        <aside>
+            <div><a href="#">Products</a></div>
+            <div><a href="#">Categories</a></div>
+            <div><a href="#">Users</a></div>
+        </aside>
+        <main>
+            <div class="render-container">
+                @RenderBody()
 
+            </div>
+        </main>
 
-    <div class="container body-content">
-        @RenderBody()
-
-    </div>
+    </section>
     <footer>
         <p>&copy; 2019 - Sokokapu_Stock_Management</p>
     </footer>

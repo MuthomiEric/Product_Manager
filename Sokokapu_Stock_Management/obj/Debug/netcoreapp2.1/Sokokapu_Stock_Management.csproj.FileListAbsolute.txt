@@ -73,3 +73,8 @@ C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_
 C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Sokokapu_Stock_Management.csproj.CopyComplete
 C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Sokokapu_Stock_Management.dll
 C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Sokokapu_Stock_Management.pdb
+C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Razor\Views\Product\Index.g.cshtml.cs
+C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Admin.g.cshtml.cs
+C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Razor\Views\Product\Details.g.cshtml.cs
+C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Razor\Views\Product\ManageProduct.g.cshtml.cs
+C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Razor\Views\Product\Sold.g.cshtml.cs

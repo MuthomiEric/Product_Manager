@@ -1,10 +1,36 @@
+.center-div {
+  width: 700px;
+  margin: 0 auto; }
+
+.bold {
+  font-weight: 600;
+  font-size: 20px; }
+
+.btn-back {
+  height: 50px;
+  padding: 10px;
+  font-size: 15px;
+  width: 100px;
+  background-color: #25b36c;
+  border-radius: 5px;
+  color: white;
+  margin: 10px; }
+
 * {
   padding: 0;
   margin: 0; }
 
+a {
+  text-decoration: none !important; }
+
+html, body {
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%; }
+
 .top-nav-div {
   width: 100%;
-  height: 100px;
+  height: 15vh;
   background-color: rgba(128, 128, 128, 0.1); }
   .top-nav-div-inner {
     max-width: 800px;
@@ -39,11 +65,102 @@
         color: #fff;
         padding: 10px; }
 
-.div-center {
-  width: 500px;
-  margin: 50px auto; }
+footer {
+  background-color: rgba(128, 128, 128, 0.5);
+  width: 100%;
+  height: 15vh;
+  text-align: center;
+  padding-top: 30px;
+  font-size: 20px; }
 
-/*.tbl-center {
-}*/
 table thead tr th {
   width: 200px; }
+
+/*ADMIN LAYOUT STYLE*/
+.top-nav-div-admin {
+  width: 100%;
+  height: 100px;
+  background-color: rgba(128, 128, 128, 0.5); }
+  .top-nav-div-admin-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    .top-nav-div-admin-inner .div-logo {
+      text-decoration: none; }
+      .top-nav-div-admin-inner .div-logo .span-red {
+        color: red; }
+      .top-nav-div-admin-inner .div-logo .span-green {
+        color: #01a350;
+        line-height: 0;
+        font-weight: bolder; }
+      .top-nav-div-admin-inner .div-logo .div-line {
+        background-color: #ee403a;
+        width: 80px;
+        height: 3px; }
+
+.main-section {
+  height: 100%;
+  display: flex; }
+  .main-section aside {
+    height: 100%;
+    min-width: 250px;
+    background-color: #01a350; }
+    .main-section aside div {
+      background-color: #25b36c;
+      margin-bottom: 2px; }
+      .main-section aside div a {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        margin: 10px 1.5em;
+        font-size: 20px;
+        color: #fff;
+        text-decoration: none; }
+
+/*END OF ADMIN LAYOUT STYLE*/
+/*INDEX PAGE STYLE*/
+.title {
+  margin-bottom: 40px;
+  text-align: center; }
+
+.display-flex {
+  display: flex;
+  flex-wrap: wrap; }
+  .display-flex .product-container {
+    border: solid 2px rgba(128, 128, 128, 0.5);
+    margin-right: 20px;
+    border-radius: 5px; }
+    .display-flex .product-container img {
+      width: 200px; }
+    .display-flex .product-container-details div {
+      width: 100%;
+      text-align: center; }
+    .display-flex .product-container-details .price {
+      font-weight: 600; }
+
+/*END OF INDEX PAGE STYLE*/
+.details-div {
+  display: flex;
+  height: 70vh; }
+  .details-div div {
+    max-height: 500px;
+    padding: 50px 50px 0 0; }
+    .details-div div img {
+      height: 500px;
+      max-height: 500px; }
+    .details-div div div {
+      height: 100px;
+      width: 100%; }
+
+.back-div {
+  margin-bottom: 20px; }
+
+.items-sold-view {
+  margin: 50px 0 0 200px;
+  padding: 50px;
+  text-align: center;
+  border: solid 2px rgba(128, 128, 128, 0.5);
+  border-radius: 5px; }

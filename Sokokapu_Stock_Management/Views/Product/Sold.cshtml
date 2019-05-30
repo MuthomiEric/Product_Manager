@@ -1,0 +1,23 @@
+﻿@model Sokokapu_Stock_Management.Models.Product
+
+@{
+
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+
+<div class="items-sold-view">
+    <h2>Add The Number of Items Sold Per Day Below</h2>
+    <div>
+        <img src=" @Html.DisplayFor(model => model.ImageUrl)" alt="Alternate Text" />
+        <div>@Html.DisplayFor(model => model.ProductName)</div>
+    </div>
+    <div>
+        <input type="text" name="name" value="" />
+        <input type="submit" asp-action="Sold" asp-route-id="@Model.Id" name="name" value="Save" />
+    </div>
+    <div>
+        <a asp-action="ManageProduct">Back to List</a>
+    </div>
+</div>

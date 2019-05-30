@@ -21,19 +21,20 @@ namespace Sokokapu_Stock_Management.Controllers
         public IActionResult Index()
         {
             var products = _productRepository.AllProducts();
-            ProductViewModel pr = new ProductViewModel();
+
             var model = products.Select(p => new ProductViewModel()
             {
+                Id = p.Id,
                 ImageUrl = p.ImageUrl,
                 ProductName = p.ProductName,
                 Description = p.Description,
                 Price = p.Price,
-                Quantity = p.Quantity,
-                NumberSold = p.NumberSold,
-                Remaining = (p.Quantity - p.NumberSold),
                 Size = p.Size,
                 InStock = p.InStock
+
             });
+
+
             return View(model);
 
         }
@@ -41,21 +42,14 @@ namespace Sokokapu_Stock_Management.Controllers
         //TODO Just like editing
         public ActionResult Sold(int id)
         {
-            if (id <= 0)
-            {
-                return NotFound();
-            }
-            else
-            {
+            var product = _productRepository.GetProductById(id);
 
 
-                var product = _productRepository.GetProductById(id);
-                ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "CatName", product.CategoryId);
-                return View(product);
-
-            }
-
+            return View(product);
         }
+
+
+
 
         //POST: Default/Edit/5
         [HttpPost]
@@ -154,18 +148,20 @@ namespace Sokokapu_Stock_Management.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int id)
         {
-            if (id <= 0)
-            {
-                return NotFound();
-            }
-
             var product = _productRepository.GetProductById(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
 
-            return View(product);
+            var model = new ProductViewModel()
+            {
+                Id = product.Id,
+                ImageUrl = product.ImageUrl,
+                ProductName = product.ProductName,
+                Description = product.Description,
+                Price = product.Price,
+                Size = product.Size,
+                InStock = product.InStock
+
+            };
+            return View(model);
         }
 
         #region Delete

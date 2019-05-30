@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProductViewModel>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="title">Products</h2>
+
+<div class="display-flex">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="product-container">
+
+            <a asp-action="Details" asp-route-id="@item.Id"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="Alternate Text" /></a>
+
+
+            <div class="product-container-details">
+
+                <div>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </div>
+                <div class="price">
+                    Ksh @Html.DisplayFor(modelItem => item.Price)
+                </div>
+                <div>
+                    @if (item.InStock == true)
+                    {
+                        <span style="color:#01a350">In Stock</span>
+                    }
+
+                    else
+                    {
+                        <span style="color:#ee403a">Sold Out</span>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

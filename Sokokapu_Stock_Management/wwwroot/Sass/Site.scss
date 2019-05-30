@@ -1,16 +1,53 @@
-﻿
+﻿//VARIABLES
+$deepRed: #ee403a;
+$deepGreen: #01a350;
+$lightRed: #f06766;
+$lighterRed: #f78584;
+$lightGreen: #25b36c;
+$topBar: rgba(128, 128, 128, .5);
+
+//MIXINS
+
+//COMMON STYLES
+.center-div {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.bold {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.btn-back {
+    height: 50px;
+    padding: 10px;
+    font-size: 15px;
+    width: 100px;
+    background-color: $lightGreen;
+    border-radius: 5px;
+    color: white;
+    margin: 10px;
+}
+//END OF COMMON STYLES
 * {
     padding: 0;
     margin: 0;
 }
 
-body {
+a {
+    text-decoration: none !important;
 }
 
+html, body {
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+}
 
 .top-nav-div {
     width: 100%;
-    height: 100px;
+    height: 15vh;
     background-color: rgba(128, 128, 128, .1);
 
     &-inner {
@@ -63,13 +100,14 @@ body {
     }
 }
 
-.div-center {
-    width: 500px;
-    margin: 50px auto;
+footer {
+    background-color: $topBar;
+    width: 100%;
+    height: 15vh;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 20px;
 }
-
-/*.tbl-center {
-}*/
 
 table {
     thead {
@@ -80,3 +118,136 @@ table {
         }
     }
 }
+
+/*ADMIN LAYOUT STYLE*/
+.top-nav-div-admin {
+    width: 100%;
+    height: 100px;
+    background-color: $topBar;
+
+    &-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .div-logo {
+            text-decoration: none;
+
+            .span-red {
+                color: red;
+            }
+
+            .span-green {
+                color: $deepGreen;
+                line-height: 0;
+                font-weight: bolder;
+            }
+
+            .div-line {
+                background-color: $deepRed;
+                width: 80px;
+                height: 3px;
+            }
+        }
+    }
+}
+
+.main-section {
+    height: 100%;
+    display: flex;
+
+    aside {
+        height: 100%;
+        min-width: 250px;
+        background-color: $deepGreen;
+
+        div {
+            background-color: $lightGreen;
+            margin-bottom: 2px;
+
+            a {
+                display: inline-block;
+                height: 100%;
+                width: 100%;
+                margin: 10px 1.5em;
+                font-size: 20px;
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+    }
+}
+/*END OF ADMIN LAYOUT STYLE*/
+
+/*INDEX PAGE STYLE*/
+.title {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+
+    .product-container {
+        border: solid 2px $topBar;
+        margin-right: 20px;
+        border-radius: 5px;
+
+        img {
+            width: 200px;
+        }
+
+        &-details {
+
+
+            div {
+                width: 100%;
+                text-align: center;
+            }
+
+            .price {
+                font-weight: 600;
+            }
+        }
+    }
+}
+/*END OF INDEX PAGE STYLE*/
+//DETAILS PAGE STYLE
+.details-div {
+    display: flex;
+    height: 70vh;
+
+    div {
+        max-height: 500px;
+        padding: 50px 50px 0 0;
+
+        img {
+            height: 500px;
+            max-height: 500px;
+        }
+
+        div {
+            height: 100px;
+            width: 100%;
+        }
+    }
+}
+
+.back-div {
+    margin-bottom: 20px;
+}
+//END OF DETAILS PAGE STYLE
+
+//SOLD ITEMS PAGE STYLE
+.items-sold-view {
+    margin: 50px 0 0 200px;
+    padding: 50px;
+    text-align: center;
+    border: solid 2px $topBar;
+    border-radius: 5px;
+}
+//END OF SOLD ITEMS PAGE STYLE

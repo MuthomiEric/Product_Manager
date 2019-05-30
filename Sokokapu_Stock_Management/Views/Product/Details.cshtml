@@ -1,0 +1,25 @@
+﻿@model ProductViewModel
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="details-div">
+
+    <div>
+        <img src="@Html.DisplayFor(model => model.ImageUrl)" alt="Product Image" />
+    </div>
+    <div>
+        <div class="bold">@Html.DisplayFor(model => model.ProductName)</div>
+        <div>
+            <p class="bold">Description</p><br />
+            @Html.DisplayFor(model => model.Description)
+        </div>
+        <div>Size @Html.DisplayFor(model => model.Size)</div>
+        <div class="bold">Ksh @Html.DisplayFor(model => model.Price)</div>
+    </div>
+</div>
+<div class="back-div">
+    <a asp-action="Index" class="btn-back">Back to List</a>
+</div>
