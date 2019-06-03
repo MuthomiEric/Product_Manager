@@ -15,7 +15,7 @@ namespace Sokokapu_Stock_Management.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            var cat = _categoryRepository.Categories();
+            var cat = _categoryRepository.AllCategories();
             return View(cat);
         }
 
@@ -47,7 +47,7 @@ namespace Sokokapu_Stock_Management.Controllers
         // GET: Category/Edit/5
         public ActionResult Edit(int id)
         {
-            var cat = _categoryRepository.FindCategoryById(id);
+            var cat = _categoryRepository.GetCategoryById(id);
             return View(cat);
         }
 

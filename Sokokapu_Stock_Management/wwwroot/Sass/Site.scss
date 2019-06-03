@@ -29,6 +29,10 @@ $topBar: rgba(128, 128, 128, .5);
     color: white;
     margin: 10px;
 }
+
+.btn {
+    margin-top: 5px !important;
+}
 //END OF COMMON STYLES
 * {
     padding: 0;
@@ -40,14 +44,13 @@ a {
 }
 
 html, body {
-    height: 100%;
     box-sizing: border-box;
     width: 100%;
 }
 
 .top-nav-div {
     width: 100%;
-    height: 15vh;
+    height: 100px;
     background-color: rgba(128, 128, 128, .1);
 
     &-inner {
@@ -103,7 +106,7 @@ html, body {
 footer {
     background-color: $topBar;
     width: 100%;
-    height: 15vh;
+    height: 100px;
     text-align: center;
     padding-top: 30px;
     font-size: 20px;
@@ -124,6 +127,8 @@ table {
     width: 100%;
     height: 100px;
     background-color: $topBar;
+    position: fixed;
+    z-index: 1;
 
     &-inner {
         max-width: 800px;
@@ -156,12 +161,14 @@ table {
 }
 
 .main-section {
-    height: 100%;
+    height: auto;
     display: flex;
+    padding-top: 100px;
 
     aside {
-        height: 100%;
+        height: auto;
         min-width: 250px;
+        margin-right: 15px;
         background-color: $deepGreen;
 
         div {
@@ -196,9 +203,11 @@ table {
         border: solid 2px $topBar;
         margin-right: 20px;
         border-radius: 5px;
+        margin-bottom: 20px;
 
         img {
             width: 200px;
+            min-height: 250px;
         }
 
         &-details {
@@ -219,10 +228,9 @@ table {
 //DETAILS PAGE STYLE
 .details-div {
     display: flex;
-    height: 70vh;
+
 
     div {
-        max-height: 500px;
         padding: 50px 50px 0 0;
 
         img {
@@ -231,21 +239,22 @@ table {
         }
 
         div {
-            height: 100px;
             width: 100%;
         }
     }
 }
 
 .back-div {
+    margin-top: 50px;
     margin-bottom: 20px;
 }
 //END OF DETAILS PAGE STYLE
 
 //SOLD ITEMS PAGE STYLE
 .items-sold-view {
-    margin: 50px 0 0 200px;
+    margin: 50px 0 150px 200px;
     padding: 50px;
+    height: 400px;
     text-align: center;
     border: solid 2px $topBar;
     border-radius: 5px;

@@ -3,16 +3,22 @@
 @{
 
     Layout = "~/Views/Shared/_Admin.cshtml";
+
 }
 
 <h2>ManageProduct</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
+<input type="hidden" name="name" value="" />
 <table class="table">
+
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
@@ -34,11 +40,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Size)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model._Category)
             </th>
             <th></th>
         </tr>
@@ -46,7 +50,11 @@
     <tbody>
         @foreach (var item in Model)
         {
+            var path = "/images/" + item.ImageUrl;
             <tr>
+                <td>
+                    <img style="height:50px;" src="@path" alt="Alternate Text" />
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductName)
                 </td>
@@ -68,17 +76,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Size)
                 </td>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                    @Html.DisplayFor(modelItem => item._Category.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a asp-action="Sold" asp-route-id="@item.Id">Number Sold</a>
-                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                    <a asp-action="Sold" asp-route-id="@item.Id" class="btn btn-primary">Number Sold</a>
+                    <a asp-action="Details" asp-route-id="@item.Id " class="btn btn-primary">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

@@ -1,20 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Sokokapu_Stock_Management.Data.Interfaces;
 using Sokokapu_Stock_Management.Models;
 using Sokokapu_Stock_Management.ViewModels;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace Sokokapu_Stock_Management.Controllers
 {
     public class ProductController : Controller
     {
+        private readonly IHostingEnvironment _environment;
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
 
-        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository)
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IHostingEnvironment environment)
         {
+            _environment = environment;
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
         }
@@ -39,37 +44,73 @@ namespace Sokokapu_Stock_Management.Controllers
 
         }
 
+        #region Sold
         //TODO Just like editing
         public ActionResult Sold(int id)
         {
-            var product = _productRepository.GetProductById(id);
-
-
-            return View(product);
-        }
-
-
-
-
-        //POST: Default/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Sold(int id, Product product)
-        {
-            if (id != product.Id)
+            if (id <= 0)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            else
             {
-                _productRepository.Update(product);
+                Product model = _productRepository.GetProductById(id);
 
-                return RedirectToAction(nameof(ManageProduct));
+                EditProductVM edit = new EditProductVM
+                {
+                    Id = model.Id,
+                    ProductName = model.ProductName,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Color = model.Color,
+                    Quantity = model.Quantity,
+                    NumberSold = model.NumberSold,
+                    Size = model.Size,
+                    ExistingImage = model.ImageUrl,
+                    CategoryId = model.CategoryId,
+                    _Category = model._Category,
+
+                };
+
+                ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name", edit.CategoryId);
+                return View(edit);
+
             }
 
-            return View();
         }
+
+
+
+        //TODO
+        //POST: Default/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Sold(EditProductVM model, int Sold)
+        {
+            if (ModelState.IsValid)
+            {
+
+                Product product = new Product();
+
+                product.Id = model.Id;
+                product.ProductName = model.ProductName;
+                product.Description = model.Description;
+                product.Price = model.Price;
+                product.Color = model.Color;
+                product.Quantity = model.Quantity;
+                product.Size = model.Size;
+                product.ImageUrl = model.ExistingImage;
+                product.CategoryId = model.CategoryId;
+                product._Category = model._Category;
+                product.NumberSold = model.NumberSold + Sold;
+                _productRepository.Edit(product);
+
+            }
+
+            return RedirectToAction("ManageProduct");
+        }
+
+        #endregion
         public IActionResult ManageProduct()
         {
             var products = _productRepository.AllProducts();
@@ -83,23 +124,42 @@ namespace Sokokapu_Stock_Management.Controllers
         public IActionResult Create()
         {
 
-            ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "CatName");
+            ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name");
             return View();
 
 
         }
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(AddProductVM model)
         {
+
             if (ModelState.IsValid)
             {
+                string uniqueFileName = FileCheck(model);
+                model.NumberSold = 0;
+                Product product = new Product
+                {
+
+                    ProductName = model.ProductName,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Color = model.Color,
+                    Quantity = model.Quantity,
+                    NumberSold = model.NumberSold,
+                    Size = model.Size,
+                    ImageUrl = uniqueFileName,
+                    CategoryId = model.CategoryId,
+                    _Category = model._Category
+
+                };
                 _productRepository.Add(product);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ManageProduct));
+
+
             }
-            else
-                throw new Exception("Not valid");
+            ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name");
 
-
+            return View();
         }
 
         #endregion
@@ -114,11 +174,26 @@ namespace Sokokapu_Stock_Management.Controllers
             }
             else
             {
+                Product model = _productRepository.GetProductById(id);
 
+                EditProductVM edit = new EditProductVM
+                {
+                    Id = model.Id,
+                    ProductName = model.ProductName,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Color = model.Color,
+                    Quantity = model.Quantity,
+                    NumberSold = model.NumberSold,
+                    Size = model.Size,
+                    ExistingImage = model.ImageUrl,
+                    CategoryId = model.CategoryId,
+                    _Category = model._Category,
 
-                var product = _productRepository.GetProductById(id);
-                ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "CatName", product.CategoryId);
-                return View(product);
+                };
+
+                ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name", edit.CategoryId);
+                return View(edit);
 
             }
 
@@ -126,42 +201,80 @@ namespace Sokokapu_Stock_Management.Controllers
 
         //POST: Default/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Product product)
+
+        public ActionResult Edit(EditProductVM model)
         {
-            if (id != product.Id)
-            {
-                return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                _productRepository.Update(product);
 
-                return RedirectToAction(nameof(ManageProduct));
+                Product product = new Product();
+
+                product.Id = model.Id;
+                product.ProductName = model.ProductName;
+                product.Description = model.Description;
+                product.Price = model.Price;
+                product.Color = model.Color;
+                product.Quantity = model.Quantity;
+                product.NumberSold = model.NumberSold;
+                product.Size = model.Size;
+
+
+                if (model.Photo != null)
+                {
+                    if (model.ExistingImage != null)
+                    {
+                        string filep = Path.Combine(_environment.WebRootPath, "images/", model.ExistingImage);
+                        System.IO.File.Delete(filep);
+                    }
+                    product.ImageUrl = FileCheck(model);
+                }
+                else
+                {
+                    product.ImageUrl = model.ExistingImage;
+                }
+
+                product.CategoryId = model.CategoryId;
+                product._Category = model._Category;
+
+                _productRepository.Edit(product);
+
+
             }
 
-            return View();
+            ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name", model.CategoryId);
+
+            return RedirectToAction("ManageProduct");
         }
+
         #endregion
 
         // GET: Products/Details/5
         public ActionResult Details(int id)
         {
-            var product = _productRepository.GetProductById(id);
 
-            var model = new ProductViewModel()
+            Product product = _productRepository.GetProductById(id);
+            if (id <= 0)
             {
-                Id = product.Id,
-                ImageUrl = product.ImageUrl,
-                ProductName = product.ProductName,
-                Description = product.Description,
-                Price = product.Price,
-                Size = product.Size,
-                InStock = product.InStock
+                return NotFound();
+            }
+            else
+            {
+                ProductViewModel model = new ProductViewModel()
+                {
 
-            };
-            return View(model);
+                    Id = product.Id,
+                    ImageUrl = product.ImageUrl,
+                    ProductName = product.ProductName,
+                    Description = product.Description,
+                    Price = product.Price,
+                    Size = product.Size,
+                    InStock = product.InStock
+                };
+                return View(model);
+            }
+
+
         }
 
         #region Delete
@@ -190,11 +303,39 @@ namespace Sokokapu_Stock_Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var p = _productRepository.GetProductById(id);
+            if (p.ImageUrl != null)
+            {
+                string filep = Path.Combine(_environment.WebRootPath, "images/", p.ImageUrl);
+                System.IO.File.Delete(filep);
+            }
+
             _productRepository.Delete(id);
 
             return RedirectToAction(nameof(Index));
         }
         #endregion
 
+        private string FileCheck(AddProductVM model)
+        {
+            string uniqueFileName = null;
+            if (model.Photo != null)
+            {
+                string uploadsFolder = Path.Combine(_environment.WebRootPath, "images/");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                string filePath = Path.Combine(uploadsFolder + uniqueFileName);
+                using (var filestream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Photo.CopyTo(filestream);
+                }
+
+
+            }
+
+            return uniqueFileName;
+        }
+
+
     }
+
 }

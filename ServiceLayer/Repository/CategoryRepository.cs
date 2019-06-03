@@ -22,10 +22,18 @@ namespace Sokokapu_Stock_Management.Data.Repository
             _productManagerDbContext.SaveChanges();
         }
 
-        public IEnumerable<Category> Categories()
+        public IEnumerable<Category> AllCategories()
         {
             return _productManagerDbContext.Categories
                 .Include(c => c.Products);
+        }
+
+
+        public void Delete(int id)
+        {
+            var cat = GetCategoryById(id);
+            _productManagerDbContext.Remove(cat);
+            _productManagerDbContext.SaveChanges();
         }
 
         public void Edit(Category category)
@@ -34,10 +42,13 @@ namespace Sokokapu_Stock_Management.Data.Repository
             _productManagerDbContext.SaveChanges();
         }
 
-        public Category FindCategoryById(int id)
+        public Category GetCategoryById(int id)
         {
             return _productManagerDbContext.Categories
+                .Include(p => p.Products)
                  .FirstOrDefault(c => c.Id == id);
         }
+
+
     }
 }

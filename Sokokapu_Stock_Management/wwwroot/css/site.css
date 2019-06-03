@@ -16,6 +16,9 @@
   color: white;
   margin: 10px; }
 
+.btn {
+  margin-top: 5px !important; }
+
 * {
   padding: 0;
   margin: 0; }
@@ -24,13 +27,12 @@ a {
   text-decoration: none !important; }
 
 html, body {
-  height: 100%;
   box-sizing: border-box;
   width: 100%; }
 
 .top-nav-div {
   width: 100%;
-  height: 15vh;
+  height: 100px;
   background-color: rgba(128, 128, 128, 0.1); }
   .top-nav-div-inner {
     max-width: 800px;
@@ -68,7 +70,7 @@ html, body {
 footer {
   background-color: rgba(128, 128, 128, 0.5);
   width: 100%;
-  height: 15vh;
+  height: 100px;
   text-align: center;
   padding-top: 30px;
   font-size: 20px; }
@@ -80,7 +82,9 @@ table thead tr th {
 .top-nav-div-admin {
   width: 100%;
   height: 100px;
-  background-color: rgba(128, 128, 128, 0.5); }
+  background-color: rgba(128, 128, 128, 0.5);
+  position: fixed;
+  z-index: 1; }
   .top-nav-div-admin-inner {
     max-width: 800px;
     margin: 0 auto;
@@ -102,11 +106,13 @@ table thead tr th {
         height: 3px; }
 
 .main-section {
-  height: 100%;
-  display: flex; }
+  height: auto;
+  display: flex;
+  padding-top: 100px; }
   .main-section aside {
-    height: 100%;
+    height: auto;
     min-width: 250px;
+    margin-right: 15px;
     background-color: #01a350; }
     .main-section aside div {
       background-color: #25b36c;
@@ -132,9 +138,11 @@ table thead tr th {
   .display-flex .product-container {
     border: solid 2px rgba(128, 128, 128, 0.5);
     margin-right: 20px;
-    border-radius: 5px; }
+    border-radius: 5px;
+    margin-bottom: 20px; }
     .display-flex .product-container img {
-      width: 200px; }
+      width: 200px;
+      min-height: 250px; }
     .display-flex .product-container-details div {
       width: 100%;
       text-align: center; }
@@ -143,24 +151,23 @@ table thead tr th {
 
 /*END OF INDEX PAGE STYLE*/
 .details-div {
-  display: flex;
-  height: 70vh; }
+  display: flex; }
   .details-div div {
-    max-height: 500px;
     padding: 50px 50px 0 0; }
     .details-div div img {
       height: 500px;
       max-height: 500px; }
     .details-div div div {
-      height: 100px;
       width: 100%; }
 
 .back-div {
+  margin-top: 50px;
   margin-bottom: 20px; }
 
 .items-sold-view {
-  margin: 50px 0 0 200px;
+  margin: 50px 0 150px 200px;
   padding: 50px;
+  height: 400px;
   text-align: center;
   border: solid 2px rgba(128, 128, 128, 0.5);
   border-radius: 5px; }

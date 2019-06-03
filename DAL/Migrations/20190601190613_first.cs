@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAL.Migrations
 {
-    public partial class UpdatedEntities : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,7 +35,7 @@ namespace DAL.Migrations
                     Quantity = table.Column<int>(nullable: false),
                     NumberSold = table.Column<int>(nullable: false),
                     Size = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

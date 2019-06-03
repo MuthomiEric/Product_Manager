@@ -1,23 +1,39 @@
-﻿@model Sokokapu_Stock_Management.Models.Product
+﻿@model EditProductVM
 
 @{
-
+    var path = "/images/" + Model.ExistingImage;
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
 
+@using (Html.BeginForm("Sold", "Product", FormMethod.Post))
+{
+    <div hidden>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ExistingImage" />
+        <input type="hidden" asp-for="ProductName" />
+        <input type="hidden" asp-for="Description" />
+        <input type="hidden" asp-for="Price" />
+        <input type="hidden" asp-for="Color" />
+        <input type="hidden" asp-for="Quantity" />
+        <input type="hidden" asp-for="NumberSold" />
+        <input type="hidden" asp-for="Size" />
+        <input type="hidden" asp-for="_Category" />
+        <input type="hidden" asp-for="CategoryId" />
+    </div>
 
-<div class="items-sold-view">
-    <h2>Add The Number of Items Sold Per Day Below</h2>
-    <div>
-        <img src=" @Html.DisplayFor(model => model.ImageUrl)" alt="Alternate Text" />
-        <div>@Html.DisplayFor(model => model.ProductName)</div>
+
+    <div class="items-sold-view">
+        <div style="height:100px">
+            <img src="@path" alt="Alternate Text" style="height:100px" asp-append-version="true" />
+        </div>
+        <h2>Add The Number of Items Sold Per Day Below</h2>
+        <div>
+            <input style="height:30px" type="text" name="Sold" value="" />
+            <input class="btn btn-success" type="submit" asp-route-id="@Model.Id" value="Save" />
+        </div>
+        <div>
+            <a asp-action="ManageProduct" class="btn btn-primary">Back to List</a>
+        </div>
     </div>
-    <div>
-        <input type="text" name="name" value="" />
-        <input type="submit" asp-action="Sold" asp-route-id="@Model.Id" name="name" value="Save" />
-    </div>
-    <div>
-        <a asp-action="ManageProduct">Back to List</a>
-    </div>
-</div>
+}

@@ -3,17 +3,21 @@
 @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
-<h2 class="title">Products</h2>
+<h2 class="title">Sokokapu Product Manager</h2>
 
 <div class="display-flex">
 
     @foreach (var item in Model)
     {
+        var path = "/images/" + item.ImageUrl;
 
         <div class="product-container">
 
-            <a asp-action="Details" asp-route-id="@item.Id"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="Alternate Text" /></a>
+            <a asp-action="Details" asp-route-id="@item.Id">
+                <img src="@path" alt="Alternate Text" />
+            </a>
 
 
             <div class="product-container-details">

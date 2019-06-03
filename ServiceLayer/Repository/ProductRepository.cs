@@ -20,23 +20,24 @@ namespace Sokokapu_Stock_Management.Data.Repository
         {
             _productManagerDbContext.Products.Add(product);
 
-
+            
             _productManagerDbContext.SaveChanges();
+
 
         }
 
         public IEnumerable<Product> AllProducts()
         {
-            return _productManagerDbContext.Products.Include(c => c.Category);
+            return _productManagerDbContext.Products.Include(c => c._Category);
 
         }
 
         public Category Category(int id)
         {
             return _productManagerDbContext.Products
-                .Include(c => c.Category)
+                .Include(c => c._Category)
                 .FirstOrDefault(p => p.Id == id)
-                .Category;
+                ._Category;
         }
 
         public void Delete(int id)
@@ -44,20 +45,32 @@ namespace Sokokapu_Stock_Management.Data.Repository
             var prod = GetProductById(id);
             _productManagerDbContext.Products.Remove(prod);
             _productManagerDbContext.SaveChanges();
+
+        }
+
+        public void Edit(Product product)
+        {
+            _productManagerDbContext.Update(product);
+            _productManagerDbContext.SaveChanges();
         }
 
         public Product GetProductById(int id)
         {
             return _productManagerDbContext.Products
-                .Include(p => p.Category)
+                .Include(p => p._Category)
                 .FirstOrDefault(p => p.Id == id);
         }
 
+
         public void Update(Product product)
         {
-            //var prod = GetProductById(id);
-            _productManagerDbContext.Products.Update(product);
+
+            //var _product = _productManagerDbContext.Products.Attach(product);
+            //_product.State = EntityState.Modified;
+
+            _productManagerDbContext.Update(product);
             _productManagerDbContext.SaveChanges();
+
         }
     }
 }

@@ -33,12 +33,13 @@ namespace Sokokapu_Stock_Management.Models
                 else
                     return false;
             }
+
         }
         public string Size { get; set; }
-        [Required]
+        [Display(Name = "Image")]
         public string ImageUrl { get; set; }
         public virtual int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Category _Category { get; set; }
 
     }
 }

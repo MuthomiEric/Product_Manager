@@ -8,8 +8,9 @@ namespace Sokokapu_Stock_Management.Data.Interfaces
         IEnumerable<Product> AllProducts();
         Product GetProductById(int id);
         void Add(Product product);
-        void Update(Product product);
+       void Update(Product product);
         Category Category(int id);
         void Delete(int id);
+        void Edit(Product product);
     }
 }

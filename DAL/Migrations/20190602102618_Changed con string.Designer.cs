@@ -9,8 +9,8 @@ using Sokokapu_Stock_Management.DBContext;
 namespace DAL.Migrations
 {
     [DbContext(typeof(ProductManagerDbContext))]
-    [Migration("20190529230037_Updated Entities")]
-    partial class UpdatedEntities
+    [Migration("20190602102618_Changed con string")]
+    partial class Changedconstring
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,8 +51,7 @@ namespace DAL.Migrations
                     b.Property<string>("Description")
                         .IsRequired();
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired();
+                    b.Property<string>("ImageUrl");
 
                     b.Property<int>("NumberSold");
 
@@ -74,7 +73,7 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Sokokapu_Stock_Management.Models.Product", b =>
                 {
-                    b.HasOne("Sokokapu_Stock_Management.Models.Category", "Category")
+                    b.HasOne("Sokokapu_Stock_Management.Models.Category", "_Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);

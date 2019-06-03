@@ -5,9 +5,10 @@ namespace Sokokapu_Stock_Management.Data.Interfaces
 {
     public interface ICategoryRepository
     {
-        IEnumerable<Category> Categories();
-        void Edit(Category category);
+        IEnumerable<Category> AllCategories();
+        Category GetCategoryById(int id);
         void Add(Category category);
-        Category FindCategoryById(int id);
+        void Delete(int id);
+        void Edit(Category category);
     }
 }
