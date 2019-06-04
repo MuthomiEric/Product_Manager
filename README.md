@@ -1,2 +1,2 @@
 # Product_Manager
-Product_Manager Using .NET Core
+Is a Product Management system built Using .NET Core
