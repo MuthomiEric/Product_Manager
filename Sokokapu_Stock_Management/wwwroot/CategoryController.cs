@@ -6,71 +6,119 @@ namespace Sokokapu_Stock_Management.Controllers
 {
     public class CategoryController : Controller
     {
+
+
         private readonly ICategoryRepository _categoryRepository;
 
         public CategoryController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
-        // GET: Category
-        public ActionResult Index()
+
+        public IActionResult ManageCategories()
         {
-            var cat = _categoryRepository.AllCategories();
-            return View(cat);
+            var category = _categoryRepository.AllCategories();
+
+            return View(category);
+
         }
 
+        #region Create
 
-        // GET: Category/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
 
             return View();
-        }
 
-        // POST: Category/Create
+
+        }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(Category category)
         {
-            try
+
+            if (ModelState.IsValid)
             {
                 _categoryRepository.Add(category);
-
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ManageCategories));
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
-        // GET: Category/Edit/5
+        #endregion
+
+        #region Edit
+        //Get
         public ActionResult Edit(int id)
         {
-            var cat = _categoryRepository.GetCategoryById(id);
-            return View(cat);
-        }
-
-        // POST: Category/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Category category)
-        {
-            if (id != category.Id)
+            if (id <= 0)
             {
                 return NotFound();
             }
+            else
+            {
+                Category category = _categoryRepository.GetCategoryById(id);
+                return View(category);
+            }
+
+        }
+
+        //POST: Default/Edit/5
+        [HttpPost]
+
+        public ActionResult Edit(Category category)
+        {
 
             if (ModelState.IsValid)
             {
                 _categoryRepository.Edit(category);
-
-                return RedirectToAction(nameof(Index));
             }
 
-            return View();
+            return RedirectToAction("ManageCategories");
         }
 
+        #endregion
+
+        // GET: Products/Details/5
+        public ActionResult Details(int id)
+        {
+            if (id <= 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                Category category = _categoryRepository.GetCategoryById(id);
+                return View(category);
+            }
+        }
+
+        #region Delete
+        //// GET: Products/Delete/5
+        //public ActionResult Delete(int id)
+        //{
+        //    if (id <= 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var category = _categoryRepository.GetCategoryById(id);
+        //    if (category == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(category);
+        //}
+
+        //// POST: Products/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //   _categoryRepository.Delete(id);
+
+        //    return RedirectToAction(nameof(ManageCategories));
+        //}
+        #endregion
 
     }
 }

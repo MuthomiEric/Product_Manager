@@ -72,7 +72,7 @@ namespace Sokokapu_Stock_Management.Controllers
 
                 };
 
-                ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name", edit.CategoryId);
+                ViewBag.CategoryId = new SelectList(_categoryRepository.AllCategories(), "Id", "Name", edit.CategoryId);
                 return View(edit);
 
             }
@@ -90,19 +90,20 @@ namespace Sokokapu_Stock_Management.Controllers
             if (ModelState.IsValid)
             {
 
-                Product product = new Product();
-
-                product.Id = model.Id;
-                product.ProductName = model.ProductName;
-                product.Description = model.Description;
-                product.Price = model.Price;
-                product.Color = model.Color;
-                product.Quantity = model.Quantity;
-                product.Size = model.Size;
-                product.ImageUrl = model.ExistingImage;
-                product.CategoryId = model.CategoryId;
-                product._Category = model._Category;
-                product.NumberSold = model.NumberSold + Sold;
+                Product product = new Product
+                {
+                    Id = model.Id,
+                    ProductName = model.ProductName,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Color = model.Color,
+                    Quantity = model.Quantity,
+                    Size = model.Size,
+                    ImageUrl = model.ExistingImage,
+                    CategoryId = model.CategoryId,
+                    _Category = model._Category,
+                    NumberSold = model.NumberSold + Sold
+                };
                 _productRepository.Edit(product);
 
             }
@@ -124,7 +125,7 @@ namespace Sokokapu_Stock_Management.Controllers
         public IActionResult Create()
         {
 
-            ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name");
+            ViewBag.CategoryId = new SelectList(_categoryRepository.AllCategories(), "Id", "Name");
             return View();
 
 
@@ -157,7 +158,7 @@ namespace Sokokapu_Stock_Management.Controllers
 
 
             }
-            ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name");
+            ViewBag.CategoryId = new SelectList(_categoryRepository.AllCategories(), "Id", "Name");
 
             return View();
         }
@@ -192,7 +193,7 @@ namespace Sokokapu_Stock_Management.Controllers
 
                 };
 
-                ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name", edit.CategoryId);
+                ViewBag.CategoryId = new SelectList(_categoryRepository.AllCategories(), "Id", "Name", edit.CategoryId);
                 return View(edit);
 
             }
@@ -208,16 +209,17 @@ namespace Sokokapu_Stock_Management.Controllers
             if (ModelState.IsValid)
             {
 
-                Product product = new Product();
-
-                product.Id = model.Id;
-                product.ProductName = model.ProductName;
-                product.Description = model.Description;
-                product.Price = model.Price;
-                product.Color = model.Color;
-                product.Quantity = model.Quantity;
-                product.NumberSold = model.NumberSold;
-                product.Size = model.Size;
+                Product product = new Product
+                {
+                    Id = model.Id,
+                    ProductName = model.ProductName,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Color = model.Color,
+                    Quantity = model.Quantity,
+                    NumberSold = model.NumberSold,
+                    Size = model.Size
+                };
 
 
                 if (model.Photo != null)
@@ -242,7 +244,7 @@ namespace Sokokapu_Stock_Management.Controllers
 
             }
 
-            ViewBag.CategoryId = new SelectList(_categoryRepository.Categories(), "Id", "Name", model.CategoryId);
+            ViewBag.CategoryId = new SelectList(_categoryRepository.AllCategories(), "Id", "Name", model.CategoryId);
 
             return RedirectToAction("ManageProduct");
         }
