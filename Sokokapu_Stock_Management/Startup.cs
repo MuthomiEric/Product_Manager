@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Sokokapu_Stock_Management.Data.Interfaces;
 using Sokokapu_Stock_Management.Data.Repository;
 using Sokokapu_Stock_Management.DBContext;
+using Sokokapu_Stock_Management.Models;
 
 namespace Sokokapu_Stock_Management
 {
@@ -31,6 +33,9 @@ namespace Sokokapu_Stock_Management
             });
 
             services.AddDbContextPool<ProductManagerDbContext>(dbc => dbc.UseSqlServer(Configuration.GetConnectionString("ProductManagerDb")));
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ProductManagerDbContext>()
+                .AddDefaultTokenProviders();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -50,7 +55,8 @@ namespace Sokokapu_Stock_Management
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            //app.UseIdentity();
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
