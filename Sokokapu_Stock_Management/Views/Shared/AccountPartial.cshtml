@@ -6,14 +6,15 @@
 @if (signInManager.IsSignedIn(User))
 {
     <form asp-action="Logout" asp-controller="Account" method="post">
-        <input type="submit" name="name" value="Logout" />
+        <input style="background-color:#f06766;margin-top:15px" type="submit" name="name" value="Logout" />
     </form>
 
 }
 else
 {
-    <ul>
-        <li><a asp-action="Register" asp-controller="Account">Register</a></li>
-        <li><a asp-action="Login" asp-controller="Account">Login</a></li>
+    <ul style="margin-top:15px">
+        @*
+            <li><a asp-action="Register" asp-controller="Account">Register</a></li>*@
+        <li class="btn btn-success"><a asp-action="Login" asp-controller="Account">Login</a></li>
     </ul>
 }

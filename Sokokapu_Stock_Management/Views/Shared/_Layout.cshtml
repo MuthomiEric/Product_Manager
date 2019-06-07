@@ -11,6 +11,7 @@
         <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
         <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
         <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -20,16 +21,21 @@
     </environment>
 </head>
 <body>
+
+    @inject SignInManager<User> signInManager
     <div class="top-nav-div">
         <div class="top-nav-div-inner">
             <div class="div-logo">
                 <a asp-action="Index" asp-controller="Product"> <h1><span class="span-green">Soko</span><span class="span-red">Kapu</span></h1></a>
                 <div class="div-line"></div>
             </div>
+            @if (signInManager.IsSignedIn(User))
+            {
+                <div class="div-btn btn btn-success">
+                    <a asp-action="ManageProduct" asp-controller="Product">Manage Products</a>
+                </div>
+            }
 
-            <div class="div-btn btn btn-success">
-                <a asp-action="ManageProduct" asp-controller="Product">Manage Products</a>
-            </div>
             <div>
                 @await Html.PartialAsync("AccountPartial")
             </div>

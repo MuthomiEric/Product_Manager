@@ -11,6 +11,7 @@
         <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
         <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
         <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -32,14 +33,14 @@
     </div>
 
     @*<partial name="_CookieConsentPartial" />*@
-    <section class="main-section">
+    <section class="main-section body-content">
         <aside>
-            <div><a href="#">Products</a></div>
-            <div><a href="#">Categories</a></div>
+            <div><a asp-action="ManageProduct" asp-controller="Product">Products</a></div>
+            <div><a asp-action="ManageCategories" asp-controller="Categories">Categories</a></div>
             <div><a href="#">Users</a></div>
         </aside>
         <main>
-            <div class="render-container">
+            <div>
                 @RenderBody()
 
             </div>

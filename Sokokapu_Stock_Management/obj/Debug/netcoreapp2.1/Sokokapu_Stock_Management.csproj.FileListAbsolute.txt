@@ -88,3 +88,4 @@ C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_
 C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Sokokapu_Stock_Management.csproj.CopyComplete
 C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Sokokapu_Stock_Management.dll
 C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Sokokapu_Stock_Management.pdb
+C:\Users\TSOMI\Desktop\PROJECTS\GitHub\Sokokapu_Stock_Management\Sokokapu_Stock_Management\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AccountLayout.g.cshtml.cs

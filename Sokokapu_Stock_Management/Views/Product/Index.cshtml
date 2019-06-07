@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<ProductViewModel>
 
-@{
+
+    @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-}
-<h2 class="title">Sokokapu Product Manager</h2>
+    }
 
-<div class="display-flex">
+    <h2 class="title">Sokokapu Product Manager</h2>
 
-    @foreach (var item in Model)
-    {
+
+    <div class="display-flex">
+
+        @foreach (var item in Model)
+        {
         var path = "/images/" + item.ImageUrl;
 
         <div class="product-container">
@@ -31,15 +34,15 @@
                 <div>
                     @if (item.InStock == true)
                     {
-                        <span style="color:#01a350">In Stock</span>
+                    <span style="color:#01a350">In Stock</span>
                     }
 
                     else
                     {
-                        <span style="color:#ee403a">Sold Out</span>
+                    <span style="color:#ee403a">Sold Out</span>
                     }
                 </div>
             </div>
         </div>
-    }
-</div>
+        }
+    </div>

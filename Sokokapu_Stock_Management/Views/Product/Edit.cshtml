@@ -8,7 +8,7 @@
 
 
 <form enctype="multipart/form-data" asp-controller="Product"
-      asp-action="Edit" method="post">
+      asp-action="Edit" method="post" class="center-form">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="ExistingImage" />
@@ -64,6 +64,6 @@
         <button type="submit" class="btn btn-primary">Save</button>
         <a asp-controller="Product" asp-action="ManageProduct"
            class="btn btn-primary">Cancel</a>
-        <a class="btn btn-primary" asp-action="Index">Back to List</a>
+        <a class="btn btn-primary" asp-action="Index"><i class="fas fa-backward"></i>Back to List</a>
     </div>
 </form>

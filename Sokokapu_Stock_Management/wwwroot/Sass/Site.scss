@@ -5,6 +5,7 @@ $lightRed: #f06766;
 $lighterRed: #f78584;
 $lightGreen: #25b36c;
 $topBar: rgba(128, 128, 128, .5);
+$topBar-light: rgba(128, 128, 128, .1);
 
 //MIXINS
 
@@ -12,6 +13,12 @@ $topBar: rgba(128, 128, 128, .5);
 .center-div {
     width: 700px;
     margin: 0 auto;
+}
+
+.body-content {
+    padding-top: 60px;
+    min-height: 600px;
+    text-align: center;
 }
 
 .bold {
@@ -260,3 +267,20 @@ table {
     border-radius: 5px;
 }
 //END OF SOLD ITEMS PAGE STYLE
+//LOGIN PAGE STYLE
+.center-form {
+    width: 40%;
+    min-width: 500px;
+    text-align: left;
+    margin: 50px auto;
+    border-radius: 5px;
+    border: solid 1px $topBar;
+    padding: 20px;
+    background-color: $topBar-light;
+
+    .input-fill {
+        width: 100%;
+        background-color: $lightGreen;
+    }
+}
+//END LOGIN PAGE STYLE
