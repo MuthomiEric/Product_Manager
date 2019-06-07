@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -79,8 +80,6 @@ namespace Sokokapu_Stock_Management.Controllers
 
         }
 
-
-
         //TODO
         //POST: Default/Edit/5
         [HttpPost]
@@ -112,8 +111,12 @@ namespace Sokokapu_Stock_Management.Controllers
         }
 
         #endregion
+
+        [Authorize]
         public IActionResult ManageProduct()
         {
+
+
             var products = _productRepository.AllProducts();
 
             return View(products);

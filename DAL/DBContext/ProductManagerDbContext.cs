@@ -13,5 +13,7 @@ namespace Sokokapu_Stock_Management.DBContext
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+
+
     }
 }

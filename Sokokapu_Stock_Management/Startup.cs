@@ -33,7 +33,15 @@ namespace Sokokapu_Stock_Management
             });
 
             services.AddDbContextPool<ProductManagerDbContext>(dbc => dbc.UseSqlServer(Configuration.GetConnectionString("ProductManagerDb")));
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                //options.Password.RequiredLength = 6;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+            })
+
                 .AddEntityFrameworkStores<ProductManagerDbContext>()
                 .AddDefaultTokenProviders();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
